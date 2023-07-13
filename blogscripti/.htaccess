@@ -1,0 +1,16 @@
+#Yönlendirmeleri aktif eder
+RewriteEngine On
+
+#SEO URL OLUŞTURMA
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+#Yeni bir yönlendirme kuralını belirledik.
+#RewriteRule ^arama/(.*)$ ara.php?ara=$1 [NC,NE,L]
+RewriteRule ^yazilar/([0-9a-zA-Z-_]+)$  detay.php?yazi_seflink=$1 [NC,NE,L]
+RewriteRule ^kategori/([0-9a-zA-Z-_]+)$  kategori-listele.php?kategori_url=$1 [NC,NE,L]
+RewriteRule ^kategori/(.*)/sayfa/(.*)$  kategori-listele.php?kategori_url=$1&sayfa=$2 [NC,NE,L]
+RewriteRule ^arama/(.*)/sayfa/(.*)$  ara.php?ara=$1&sayfa=$2 [NC,NE,L]
+RewriteRule ^sayfa/(.*)$ index.php?sayfa=$1
+RewriteRule ^anasayfa/? index.php [NC,L]
